@@ -1,5 +1,6 @@
 <application>
   <component name="Git.Application.Settings">
+    <option name="myPathToGit" value="$USER_HOME$/Documents/Tutos et fichiers d'install/Fichiers d'instal/Développement/git" />
     <option name="SSH_EXECUTABLE" value="IDEA_SSH" />
   </component>
 </application>
