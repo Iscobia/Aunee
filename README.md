@@ -3,13 +3,16 @@
 Python 3.4
 Alpha project
 
+
 Official Website (mainwhile only in French) : https://aunee.frama.site
 
 **CAUTION : at this stage, data only exist for France. Any contribution to enrich the database for other countries is very welcome !**
 
 
+
 ### Dependances (18/06/2018):
 None
+
 
 ### Données d'entrée
 `inputFR.py` contains environmental data (climate and soil), biological and dietical data relative to each crop from the software's database for France. Actually, they are organized in **dictionnaries**, respectively  `environment`, `plants`, and `nutrition`. **Any proposal or comment is welcome** for a better data management ! Ideally, data should be able to get modified by users in an interactive table in a GUI.
@@ -24,12 +27,16 @@ Aunée is composed by three parts:
    4. `ASSESS_Water(crop,x,PRA)`: excludes crops which can't get **enough water** during their growing season in the selected area.
    5. `ASSESS_pH(crop,x,PRA)`: only keeps crops for which the **soil pH** is tolerable.
    
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\TRANSLATION IN PROGRESS\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\ thanks for your patience \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+
+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*TRANSLATION IN PROGRESS\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+
+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* thanks for your patience \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+
+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
    
 2. `ASSESS_Priority(x,PRA)`: Calcul d'**indices "d''adaptabilité" et de priorité** devant **aider au choix des cultures** lors de l'élaboration de la **rotation**. Cette fonction fait partie du "step1(.py)"
+
 
 3. **Étape 2** : `MDL_Rotations(crop,x,PRA)`. Élaboration d'une **rotation culturale jusqu'à épuisement des ressources du sol**: si plus aucune culture ne peut pousser par manque d'éléments nutritifs, la rotation est terminée. **Pour chaque test** précédent le choix de la culture suivante, on calcule un** indice compris entre 0 et 1 pour estimer la qualité de la ressource** par rapport aux exigences de la plante (plus l'indice est haut, meilleure est la ressource/condition climatique).
    1. `ASSESS_SeedingDate(PRA, x)`: On cherche la **période de plantation idéale** pour chaque culture pouvant être plantée le plus tôt possible après la culture précédente (pour la première culture, le mois de départ est fixé à mars)
@@ -46,12 +53,16 @@ Aunée is composed by three parts:
    12. Adaptation du rendement **en fonction de la sécheresse et potentiels ravageurs et maladies** à laquelle la culture a dû faire face
    13. `APPLY_ResiduesDecomposition_of_SelectedCrop(x)` : Calcul des nutriments rendus sur la durée par les résidus de la culture sélectionnée avant de choisir la suivante.
    
+   
 4. **Étape 3:** `MDL_QTTperPerson(x,nutrition)`. Détermination de la **quantité d'éléments nutritionnels obtenus** d'après les rendements calculés lors de l'étape 2. On **compare** ensuite cette quantité aux **besoins nutritionnels** de la population en **prenant en compte les classes d'âge des différentes strates de la population**.
+
 
 
 ### Projet d'interface graphique:
 Une fois le code fonctionnel et stable, il est prévu de lui offrir une **interface graphique cross-plateforme la plus épurée et intuitive possible**. Une maquette est disponible sur le site officiel https://aunee.frama.site 
 La possibilité de créer un GUI grâce à **Django** a été énoncée à plusieurs reprise. Il serait intéressant de savoir si une **utilisation hors ligne** serait possible. L'idéal serait que el programme puisse être utilisé **en ligne comme hors ligne**.
+
+
 
 ### Informations supplémentaires
 Le travail réalisé en amont du projet ainsi que son manuel complet pour la version du 19 juin 2018 sont disponibles sur [le site officiel](https://aunee.frama.site/downloads).
